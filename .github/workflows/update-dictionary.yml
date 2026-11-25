@@ -33,8 +33,10 @@ jobs:
       - name: Install generator tools
         run: |
           sudo apt-get update
-          sudo apt-get install --yes sqlite3
-          python3 -m pip install --user PyYAML
+          sudo apt-get install --yes sqlite3 python3-venv
+          python3 -m venv .venv
+          .venv/bin/pip install PyYAML
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
 
       - name: Generate qawHaq.db
         working-directory: .tmp/klingon-assistant-data
