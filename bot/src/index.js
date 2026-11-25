@@ -33,12 +33,33 @@ if (config) {
     console.log(`[beq] Bereit auf ${readyClient.guilds.cache.size} Server(n).`);
   });
 
-  client.on(Events.MessageCreate, async (message) => {
+  async function processMessage(message) {
     try {
       await handleMessage(message, config.commandPrefix);
     } catch (error) {
       console.error('[beq] Fehler bei der Nachrichtenverarbeitung:', error);
     }
+  }
+
+  // A normal send emits MessageCreate. Editing one's previous Discord message
+  // (for example with Cursor-Up) emits MessageUpdate instead, so both paths
+  // must use the same command handler.
+  client.on(Events.MessageCreate, processMessage);
+  client.on(Events.MessageUpdate, async (oldMessage, newMessage) => {
+    if (oldMessage.content === newMessage.content) {
+      return;
+    }
+
+    if (newMessage.partial) {
+      try {
+        await processMessage(await newMessage.fetch());
+      } catch (error) {
+        console.error('[beq] Bearbeitete Nachricht konnte nicht geladen werden:', error);
+      }
+      return;
+    }
+
+    await processMessage(newMessage);
   });
 
   client.on('error', (error) => {

@@ -11,6 +11,9 @@ bewusst exakt und verzichten auf Fuzzy-Suche oder automatische Morphologie:
 `ping` bleibt ein Diagnosewerkzeug, damit eine neue Heroku-Installation leicht
 geprüft werden kann. Wenn eine exakte Suche nichts findet, versucht beq noch
 eine Fragment-Suche in derselben Sprache und kennzeichnet die Treffer deutlich.
+Bearbeitete eigene Nachrichten werden ebenfalls verarbeitet. Dadurch kann ein
+Befehl in Discord mit Cursor-Up zurückgeholt, leicht geändert und erneut
+gesendet werden.
 
 ## Struktur
 
