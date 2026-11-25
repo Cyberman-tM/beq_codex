@@ -1,9 +1,15 @@
 # beq Bot
 
 Der Bot wird von Grund auf neu und modular aufgebaut. Der aktuelle Stand ist
-bewusst klein: Er meldet sich bei Discord an und beantwortet `x?ping` mit
-`Pong!`. Dieser Befehl ist nur ein Diagnosewerkzeug, damit eine neue Heroku-
-Installation leicht geprüft werden kann.
+bewusst klein: Er meldet sich bei Discord an, beantwortet `x?ping` mit `Pong!`
+und bietet die erste einfache Wörterbuchsuche. Diese Befehle sind zunächst
+bewusst exakt und verzichten auf Fuzzy-Suche oder automatische Morphologie:
+
+- `x?tlh mu'` — Klingonisch nachschlagen
+- `x!mugh tlh *mu'* de` — explizite Suche mit alter Befehlssyntax
+
+`ping` bleibt ein Diagnosewerkzeug, damit eine neue Heroku-Installation leicht
+geprüft werden kann.
 
 ## Struktur
 
