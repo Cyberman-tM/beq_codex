@@ -1,4 +1,4 @@
-import { isLanguage, languageName, lookup } from '../dictionary.js';
+import { isLanguage, languageName, lookup, lookupFragment } from '../dictionary.js';
 
 const MAX_RESULTS = 5;
 const MAX_MESSAGE_LENGTH = 1900;
@@ -25,12 +25,14 @@ function formatEntry(entry, targetLanguage) {
   ].join('\n');
 }
 
-function formatResults(term, sourceLanguage, targetLanguage, results) {
+function formatResults(term, sourceLanguage, targetLanguage, results, fragment = false) {
   if (results.length === 0) {
     return `Keine Treffer für \`${term}\` in ${languageName(sourceLanguage)}.`;
   }
 
-  const header = `**${results.length} Treffer für \`${term}\`**`;
+  const header = fragment
+    ? `**Keine exakte Übereinstimmung. Fragmenttreffer für \`${term}\` (${results.length})**`
+    : `**${results.length} Treffer für \`${term}\`**`;
   const body = results.map((entry) => formatEntry(entry, targetLanguage)).join('\n\n');
   const message = `${header}\n\n${body}`;
   return message.length <= MAX_MESSAGE_LENGTH
@@ -50,7 +52,14 @@ export const tlhCommand = {
       return;
     }
 
-    await message.reply(formatResults(term, 'tlh', 'de', lookup(term, 'tlh', MAX_RESULTS)));
+    let results = lookup(term, 'tlh', MAX_RESULTS);
+    let fragment = false;
+    if (results.length === 0) {
+      results = lookupFragment(term, 'tlh', MAX_RESULTS);
+      fragment = results.length > 0;
+    }
+
+    await message.reply(formatResults(term, 'tlh', 'de', results, fragment));
   },
 };
 
@@ -77,6 +86,13 @@ export const mughCommand = {
       return;
     }
 
-    await message.reply(formatResults(term, sourceLanguage, targetLanguage, lookup(term, sourceLanguage, MAX_RESULTS)));
+    let results = lookup(term, sourceLanguage, MAX_RESULTS);
+    let fragment = false;
+    if (results.length === 0) {
+      results = lookupFragment(term, sourceLanguage, MAX_RESULTS);
+      fragment = results.length > 0;
+    }
+
+    await message.reply(formatResults(term, sourceLanguage, targetLanguage, results, fragment));
   },
 };

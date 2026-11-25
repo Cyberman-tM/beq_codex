@@ -40,13 +40,12 @@ function searchPattern(term) {
   return term.includes('*') || term.includes('?') ? term : term;
 }
 
-export function lookup(term, sourceLanguage = 'tlh', limit = 5) {
+function lookupWithPattern(pattern, exactTerm, sourceLanguage, limit) {
   const language = getLanguage(sourceLanguage);
-  if (!language || !term) {
+  if (!language || !pattern) {
     return [];
   }
 
-  const pattern = searchPattern(term);
   const predicates = language.searchColumns.map((column) => `${column} GLOB ?`);
   const sql = `
     SELECT _id, entry_name, part_of_speech, definition, definition_de,
@@ -58,11 +57,25 @@ export function lookup(term, sourceLanguage = 'tlh', limit = 5) {
   `;
   const parameters = [
     ...language.searchColumns.map(() => pattern),
-    term,
+    exactTerm,
     limit,
   ];
 
   return database.prepare(sql).all(...parameters);
+}
+
+export function lookup(term, sourceLanguage = 'tlh', limit = 5) {
+  if (!term) {
+    return [];
+  }
+  return lookupWithPattern(searchPattern(term), term, sourceLanguage, limit);
+}
+
+export function lookupFragment(term, sourceLanguage = 'tlh', limit = 5) {
+  if (!term) {
+    return [];
+  }
+  return lookupWithPattern(`*${term}*`, term, sourceLanguage, limit);
 }
 
 export function isLanguage(code) {

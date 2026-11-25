@@ -9,7 +9,8 @@ bewusst exakt und verzichten auf Fuzzy-Suche oder automatische Morphologie:
 - `x!mugh tlh *mu'* de` — explizite Suche mit alter Befehlssyntax
 
 `ping` bleibt ein Diagnosewerkzeug, damit eine neue Heroku-Installation leicht
-geprüft werden kann.
+geprüft werden kann. Wenn eine exakte Suche nichts findet, versucht beq noch
+eine Fragment-Suche in derselben Sprache und kennzeichnet die Treffer deutlich.
 
 ## Struktur
 
