@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { BOT_NAME } from '../config.js';
 import { sendStandalone } from './respond.js';
 
 const packagePath = fileURLToPath(new URL('../../../package.json', import.meta.url));
@@ -22,7 +23,7 @@ export const identityCommand = {
   async execute(message) {
     const entryCount = message.client.dictionaryEntryCount ?? 'unbekannt';
     const content = [
-      '**devbeq**',
+      `**devbeq — ${BOT_NAME}**`,
       `Version: ${packageInfo.version}`,
       'Ein Klingonisch-Nachschlagebot für Discord.',
       `Datenbankeinträge: ${entryCount}`,

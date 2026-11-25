@@ -1,3 +1,6 @@
+/** Human-readable name of the current bot generation. */
+export const BOT_NAME = 'Codex';
+
 /**
  * Zentrale Konfiguration des Bots.
  *
