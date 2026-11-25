@@ -1,7 +1,7 @@
 # beq Bot
 
 Der Bot wird von Grund auf neu und modular aufgebaut. Der aktuelle Stand ist
-bewusst klein: Er meldet sich bei Discord an und beantwortet `?ping` mit
+bewusst klein: Er meldet sich bei Discord an und beantwortet `x?ping` mit
 `Pong!`. Dieser Befehl ist nur ein Diagnosewerkzeug, damit eine neue Heroku-
 Installation leicht geprüft werden kann.
 

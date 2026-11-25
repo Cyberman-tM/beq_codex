@@ -15,6 +15,8 @@ export function loadConfig(env = process.env) {
 
   return {
     token,
-    commandPrefix: env.COMMAND_PREFIX?.trim() || '?',
+    // Während der parallelen Testphase unterscheidet sich devbeq bewusst vom
+    // alten Bot, der weiterhin auf '?' reagiert.
+    commandPrefix: env.COMMAND_PREFIX?.trim() || 'x?',
   };
 }
