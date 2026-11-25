@@ -9,7 +9,7 @@
     "dev": "node --env-file-if-exists=.env --watch bot/src/index.js"
   },
   "engines": {
-    "node": "24.x"
+    "node": "24.x || 26.x"
   },
   "dependencies": {
     "discord.js": "^14.27.0"
