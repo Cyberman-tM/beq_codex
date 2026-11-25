@@ -21,10 +21,10 @@ jobs:
 
     steps:
       - name: Check out beq_codex
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check out boQwI' data
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: De7vID/klingon-assistant-data
           ref: ${{ inputs.source_ref }}
