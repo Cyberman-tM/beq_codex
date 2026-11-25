@@ -48,7 +48,7 @@ export const tlhCommand = {
   async execute(message, args) {
     const term = args.join(' ').trim();
     if (!term) {
-      await message.reply('Verwendung: `x?tlh <Wort>`');
+      await message.channel.send('Verwendung: `x?tlh <Wort>`');
       return;
     }
 
@@ -59,7 +59,9 @@ export const tlhCommand = {
       fragment = results.length > 0;
     }
 
-    await message.reply(formatResults(term, 'tlh', 'de', results, fragment));
+    // Do not use message.reply here: Discord resolves a reply by message ID,
+    // so editing the original command would also change the old reply preview.
+    await message.channel.send(formatResults(term, 'tlh', 'de', results, fragment));
   },
 };
 
@@ -73,7 +75,7 @@ export const mughCommand = {
   name: 'mugh',
   async execute(message, args) {
     if (args.length < 3) {
-      await message.reply('Verwendung: `x!mugh <tlh|de|en> <Suchbegriff> <de|en|tlh>`');
+      await message.channel.send('Verwendung: `x!mugh <tlh|de|en> <Suchbegriff> <de|en|tlh>`');
       return;
     }
 
@@ -82,7 +84,7 @@ export const mughCommand = {
     const term = args.slice(1, -1).join(' ').trim();
 
     if (!isLanguage(sourceLanguage) || !isLanguage(targetLanguage) || !term) {
-      await message.reply('Sprachen müssen `tlh`, `de` oder `en` sein.');
+      await message.channel.send('Sprachen müssen `tlh`, `de` oder `en` sein.');
       return;
     }
 
@@ -93,6 +95,6 @@ export const mughCommand = {
       fragment = results.length > 0;
     }
 
-    await message.reply(formatResults(term, sourceLanguage, targetLanguage, results, fragment));
+    await message.channel.send(formatResults(term, sourceLanguage, targetLanguage, results, fragment));
   },
 };
