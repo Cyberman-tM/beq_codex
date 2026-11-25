@@ -86,3 +86,7 @@ export function languageName(code) {
   return getLanguage(code)?.name ?? code;
 }
 
+export function countEntries() {
+  return database.prepare('SELECT COUNT(*) AS count FROM mem').get().count;
+}
+

@@ -7,6 +7,7 @@ bewusst exakt und verzichten auf Fuzzy-Suche oder automatische Morphologie:
 
 - `x?tlh mu'` — Klingonisch nachschlagen
 - `x!mugh tlh *mu'* de` — explizite Suche mit alter Befehlssyntax
+- `x!yIngu'` — Bot- und Datenbankinformationen
 
 `ping` bleibt ein Diagnosewerkzeug, damit eine neue Heroku-Installation leicht
 geprüft werden kann. Wenn eine exakte Suche nichts findet, versucht beq noch

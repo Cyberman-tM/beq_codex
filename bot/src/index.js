@@ -1,6 +1,7 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { loadConfig } from './config.js';
 import { handleMessage } from './commands/index.js';
+import { countEntries } from './dictionary.js';
 
 /**
  * Einstiegspunkt von beq.
@@ -27,6 +28,8 @@ if (config) {
       GatewayIntentBits.MessageContent,
     ],
   });
+
+  client.dictionaryEntryCount = countEntries();
 
   client.once(Events.ClientReady, (readyClient) => {
     console.log(`[beq] Eingeloggt als ${readyClient.user.tag}`);

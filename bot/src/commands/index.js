@@ -1,5 +1,6 @@
 import { pingCommand } from './ping.js';
 import { mughCommand, tlhCommand } from './translate.js';
+import { identityCommand } from './identity.js';
 
 // Neue Textbefehle werden hier registriert. Jedes Kommando bleibt in einer
 // eigenen Datei, damit index.js nicht zur großen Sammeldatei anwächst.
@@ -7,6 +8,7 @@ const commands = new Map([
   [pingCommand.name, pingCommand],
   [tlhCommand.name, tlhCommand],
   [mughCommand.name, mughCommand],
+  [identityCommand.name, identityCommand],
 ]);
 
 export async function handleMessage(message, prefix) {
