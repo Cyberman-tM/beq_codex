@@ -1,0 +1,5 @@
+Source: https://github.com/De7vID/klingon-assistant-data
+Source ref: main
+Source commit: 0f6018ece74a3f5a4b61ddcd4c7a28b010bb7fd0
+Database version: 2026.07.24b
+Generated at: 2026-11-25T21:52:18Z
