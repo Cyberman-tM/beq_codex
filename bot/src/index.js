@@ -50,8 +50,10 @@ if (config) {
   // (for example with Cursor-Up) emits MessageUpdate instead, so both paths
   // must use the same command handler.
   client.on(Events.MessageCreate, processMessage);
-  client.on(Events.MessageUpdate, async (oldMessage, newMessage) => {
-    if (oldMessage.content === newMessage.content) {
+  client.on(Events.MessageUpdate, async (_oldMessage, newMessage) => {
+    // MessageUpdate is also emitted for non-content changes (for example
+    // embeds). Only a real user edit should re-run a command.
+    if (!newMessage.editedTimestamp) {
       return;
     }
 
