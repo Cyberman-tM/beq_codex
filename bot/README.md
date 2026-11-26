@@ -20,6 +20,7 @@ gesendet werden.
 
 - `src/index.js` — Einstiegspunkt; verbindet Discord mit den Modulen
 - `src/config.js` — liest und prüft Umgebungsvariablen
+- `../data/personality.json` — zentral gepflegte Meldungen nach Zweck
 - `src/commands/` — einzelne Textbefehle, jeweils möglichst in eigener Datei
 - `../Procfile` — startet auf Heroku den Worker-Prozess
 

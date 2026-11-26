@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { BOT_NAME } from '../config.js';
+import { randomLine } from '../personality.js';
 import { sendStandalone } from './respond.js';
 
 const packagePath = fileURLToPath(new URL('../../../package.json', import.meta.url));
@@ -30,6 +31,7 @@ export const identityCommand = {
       '```text',
       readSourceInfo(),
       '```',
+      randomLine('identity'),
     ].join('\n');
 
     await sendStandalone(message, content);

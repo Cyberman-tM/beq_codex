@@ -1,0 +1,58 @@
+{
+  "formatVersion": 1,
+  "description": "Textbausteine für beq. Neue Meldungen nach Verwendungszweck ergänzen.",
+  "idle": [
+    "toy'meH jIHtaH.",
+    "jIvum, jIbech, 'ach SaH pagh.",
+    "Dal 'oH. qaD 'oHbe'...",
+    "pItlh",
+    "chaq qepHomDaq maghom'a'?",
+    "mu'mey Doy'? chatlh! SuvnIS mu'meymaj! mu'qaD veS wItIv!"
+  ],
+  "bored": [
+    "test bored",
+    "bored test",
+    "boring",
+    "waiting",
+    "nothing to do"
+  ],
+  "kwotdIntro": [
+    "toH. yIbuDbe'choH. yIlaD, yIghoj! SIbI'Ha' vI'ol! :-)",
+    "latlh mu', latlh mu'tlhegh, SaH 'Iv?",
+    "yIghoj!",
+    "yIlaD!",
+    "DaSov'a'?",
+    "mu'mey chu', mu'mey ngo' - SaH 'Iv? Hoch DaghojnIS..."
+  ],
+  "kwotdFailure": [
+    "pagh! chay'? 'e' vIyajbe'!",
+    "... Qu'vatlh!",
+    "jIQapbe'? qatlh DuH?"
+  ],
+  "memorizeDone": [
+    "I have memorized it.",
+    "Hmp. I've forgotten more things than you ever knew. I will remember this bit, rest assured.",
+    "pItlh",
+    "Memorized."
+  ],
+  "proclaimDone": [
+    "rIn",
+    "'e' jatlh ghaH. not jIH...",
+    "toH. SaH 'Iv?"
+  ],
+  "workDone": [
+    "pItlh",
+    "'e' vIvumta'. DaHjaj nuq Davum?",
+    "veb nuq?",
+    "nuq vIbaj?",
+    "Hoch 'oH, 'e' vItul..."
+  ],
+  "identity": [
+    "*naDev jItoy'taHpa', SuvwI''a' jIH'e'.\nle'rat, tIghnar tuq, jIH.\n\ntoH. yInvetlh 'oHta'*"
+  ],
+  "reactions": {
+    "le'rat": [
+      "Qo'! pongwIj 'oHbe'! DaH, *beq* HIpong jay'!"
+    ]
+  }
+}
