@@ -8,6 +8,8 @@ bewusst exakt und verzichten auf Fuzzy-Suche oder automatische Morphologie:
 - `x?tlh mu'` — Klingonisch nachschlagen
 - `x!mugh tlh *mu'* de` — explizite Suche mit alter Befehlssyntax
 - `x!yIngu'` — Bot- und Datenbankinformationen
+- `x!config lang en` — persönliche Standardsprache setzen
+- `x!config kurz an` — Kurzformat aktivieren
 
 `ping` bleibt ein Diagnosewerkzeug, damit eine neue Heroku-Installation leicht
 geprüft werden kann. Wenn eine exakte Suche nichts findet, versucht beq noch
@@ -15,6 +17,10 @@ eine Fragment-Suche in derselben Sprache und kennzeichnet die Treffer deutlich.
 Bearbeitete eigene Nachrichten werden ebenfalls verarbeitet. Dadurch kann ein
 Befehl in Discord mit Cursor-Up zurückgeholt, leicht geändert und erneut
 gesendet werden.
+
+Benutzereinstellungen werden derzeit nur im Arbeitsspeicher gehalten und gehen
+bei einem Neustart verloren. Der Zugriff läuft über `src/preferences.js`, damit
+später ein persistenter Speicher ergänzt werden kann.
 
 ## Struktur
 
