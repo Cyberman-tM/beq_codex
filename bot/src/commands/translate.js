@@ -1,4 +1,5 @@
 import { isLanguage, languageName, lookup, lookupFragment } from '../dictionary.js';
+import { describePartOfSpeech } from '../partOfSpeech.js';
 import { sendStandalone } from './respond.js';
 
 const MAX_RESULTS = 5;
@@ -19,11 +20,17 @@ function translationValue(entry, targetLanguage) {
 }
 
 function formatEntry(entry, targetLanguage) {
-  const partOfSpeech = entry.part_of_speech ? ` *(${entry.part_of_speech})*` : '';
+  const outputLanguage = targetLanguage === 'en' ? 'en' : 'de';
+  const partOfSpeech = describePartOfSpeech(entry.part_of_speech, outputLanguage);
+  const title = `**${partOfSpeech.label}: ${entry.entry_name}**`;
+  const detailLine = partOfSpeech.details.length > 0
+    ? `*${partOfSpeech.details.join(' · ')}*`
+    : '';
   return [
-    `**${entry.entry_name}**${partOfSpeech}`,
+    title,
+    detailLine,
     `${targetLanguage.toUpperCase()}: ${translationValue(entry, targetLanguage)}`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }
 
 function formatResults(term, sourceLanguage, targetLanguage, results, fragment = false) {
