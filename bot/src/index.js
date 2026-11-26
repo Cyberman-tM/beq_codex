@@ -2,6 +2,7 @@ import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { loadConfig } from './config.js';
 import { handleMessage } from './commands/index.js';
 import { countEntries } from './dictionary.js';
+import { announceMemberJoin } from './events/memberWelcome.js';
 
 /**
  * Einstiegspunkt von beq.
@@ -26,6 +27,7 @@ if (config) {
       GatewayIntentBits.Guilds,
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.MessageContent,
+      GatewayIntentBits.GuildMembers,
     ],
   });
 
@@ -63,6 +65,14 @@ if (config) {
     }
 
     await processMessage(newMessage);
+  });
+
+  client.on(Events.GuildMemberAdd, async (member) => {
+    try {
+      await announceMemberJoin(member, config.welcomeChannelId);
+    } catch (error) {
+      console.error('[beq] Fehler bei der Begrüßung eines neuen Mitglieds:', error);
+    }
   });
 
   client.on('error', (error) => {

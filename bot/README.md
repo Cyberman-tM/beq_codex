@@ -36,11 +36,13 @@ erkennt.
 3. `npm start`
 
 Heroku erhält den Token als Config Var `DISCORD_TOKEN`; der Token gehört nie
-ins Repository.
+ins Repository. Für den optionalen Begrüßungskanal wird `WELCOME_CHANNEL_ID`
+als Config Var gesetzt.
 
 ## Discord-Konfiguration
 
 Für den Diagnosebefehl muss im Discord Developer Portal der privilegierte
 Intent **Message Content Intent** aktiviert werden. Beim Einladen des Bots
 werden außerdem die Berechtigungen benötigt, Nachrichten zu sehen und zu
-senden.
+senden. Für Begrüßungen neuer Mitglieder muss zusätzlich der privilegierte
+Intent **Server Members Intent** aktiviert werden.

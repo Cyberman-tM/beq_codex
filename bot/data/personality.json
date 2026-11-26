@@ -50,6 +50,9 @@
   "identity": [
     "*naDev jItoy'taHpa', SuvwI''a' jIH'e'.\nle'rat, tIghnar tuq, jIH.\n\ntoH. yInvetlh 'oHta'*"
   ],
+  "welcome": [
+    "Willkommen auf dem Server, {user}!"
+  ],
   "reactions": {
     "le'rat": [
       "Qo'! pongwIj 'oHbe'! DaH, *beq* HIpong jay'!"

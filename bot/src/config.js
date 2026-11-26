@@ -18,6 +18,7 @@ export function loadConfig(env = process.env) {
 
   return {
     token,
+    welcomeChannelId: env.WELCOME_CHANNEL_ID?.trim() || null,
     // Während der parallelen Testphase unterscheidet sich devbeq bewusst vom
     // alten Bot, der weiterhin auf '?' reagiert.
     commandPrefix: env.COMMAND_PREFIX?.trim() || 'x?',
