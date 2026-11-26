@@ -22,13 +22,12 @@ function translationValue(entry, targetLanguage) {
 function formatEntry(entry, targetLanguage) {
   const outputLanguage = targetLanguage === 'en' ? 'en' : 'de';
   const partOfSpeech = describePartOfSpeech(entry.part_of_speech, outputLanguage);
-  const title = `**${partOfSpeech.label}: ${entry.entry_name}**`;
+  const title = `**${partOfSpeech.label}:** ${entry.entry_name}`;
   const detailLine = partOfSpeech.details.length > 0
-    ? `*${partOfSpeech.details.join(' · ')}*`
+    ? ` · *${partOfSpeech.details.join(' · ')}*`
     : '';
   return [
-    title,
-    detailLine,
+    `${title}${detailLine}`,
     `${targetLanguage.toUpperCase()}: ${translationValue(entry, targetLanguage)}`,
   ].filter(Boolean).join('\n');
 }
